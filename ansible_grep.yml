@@ -1,0 +1,22 @@
+---
+- name: Test grep
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Test for line
+      shell: grep "pam_tally2" /etc/pam.d/system-auth
+      ignore_errors: yes
+      register: test_grep
+
+    - name: Debug test_grep
+      debug:
+        msg: "{{ test_grep.rc }}"
+
+    - name: Echo hello world!
+      command: echo "Hello world!"
+      register: ouput_command
+      when: test_grep.rc != 0
+
+    - name: Debug output_command
+      debug:
+        msg: "{{ ouput_command }}"

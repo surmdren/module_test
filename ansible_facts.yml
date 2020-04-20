@@ -1,0 +1,6 @@
+- name: Fact dump
+  hosts: localhost
+  tasks:
+    - name: Print all facts
+      debug:
+        msg: "{{ ansible_mounts }}"
