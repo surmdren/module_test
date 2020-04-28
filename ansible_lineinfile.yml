@@ -7,7 +7,7 @@
       lineinfile: 
          path: /home/ysurmd/ansible/module_test/test.txt
          line: b
-         regexp: '^q'
+         regexp: '[\t ]{0,}test'
       ignore_errors: yes
       register: test_lineinfile
 

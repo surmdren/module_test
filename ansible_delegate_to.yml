@@ -1,0 +1,12 @@
+---
+- name: Test delegate_to
+  hosts: dia_hc
+  tasks:
+    - name: Test delegate_to
+      command: hostname
+      delegate_to: localhost
+      register: output_command
+    
+    - name: Debug output_command
+      debug:
+        msg: "{{ output_command }}"
